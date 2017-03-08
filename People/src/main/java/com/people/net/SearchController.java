@@ -42,7 +42,8 @@ public class SearchController {
 	@RequestMapping(value = "/delete-person", method = RequestMethod.GET)
 	public String doGetDeletePerson(ModelMap model, @RequestParam int id){
 		searchServ.deletePerson(id);
-		return "redirect:search";
+		model.put("infoMessage", "Deleted");
+		return "search";
 	}
 	
 	@RequestMapping(value = "/add-person", method = RequestMethod.GET)
@@ -66,9 +67,9 @@ public class SearchController {
 		if(result.hasErrors()){
 			return "userpage";
 		}
-		
+		model.put("infoMessage", "Updated");
 		searchServ.updateData(userinfo);
-		return "redirect:search";
+		return "search";
 	
 	}
 	
@@ -78,8 +79,9 @@ public class SearchController {
 		if(result.hasErrors()){
 			return "userpage";
 		}
+		model.put("infoMessage", "Added");
 		searchServ.addData(userinfo);
-		return "redirect:search";
+		return "search";
 	}
 	
 	

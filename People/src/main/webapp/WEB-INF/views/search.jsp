@@ -11,13 +11,18 @@
 	                rel="stylesheet">
 </head>
 	<body>
+	<br>
 		<div class="container">
+			<p align="center" class="text-info">People Systems 1.0.1</p>
+			<c:if test="${not empty infoMessage}">
+  				<p align="center" class="bg-success">${infoMessage}</p>
+			</c:if>
 			<form action="search" method="post">
-				<p><font color="red">${errorMessage}</font></p>
 				 <input type="text" required="required" class="form-control" name="search"/><br>
-				 <input type="submit" class="btn" value="Search"></input>
+				 <input type="submit" class="btn btn-primary btn-block" value="Search"></input>
 			</form>
-			<a class="btn btn-warning"  href="/add-person">Add Data</a>
+			
+			<a class="btn btn-default btn-block"  href="/add-person">Add</a>
 		</div>
 		<script src="webjars/jquery/2.2.4/jquery.min.js"></script>
 		<script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
