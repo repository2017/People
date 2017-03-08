@@ -1,10 +1,10 @@
 package com.people.net;
 
+import java.util.Calendar;
+
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-
 import org.hibernate.validator.constraints.Email;
-import org.springframework.format.annotation.NumberFormat;
 
 
 /**
@@ -17,11 +17,11 @@ import org.springframework.format.annotation.NumberFormat;
  */
 public class UserInfo {
 	//Unicode check
-	@Pattern(regexp="^[\\p{L}0-9]*$", message="latin chars chars max 90")
+	@Pattern(regexp="[0-9a-zA-Z\\s-]+", message="latin chars,numbers allowed only")
 	String name;
 	int id;
 
-	@Pattern(regexp="(^$|[0-9]{10})", message="minLength=maxLength=10 only numbers")
+	@Pattern(regexp="([0-9]{10})", message="minLength=maxLength=10 only numbers")
 	String pin;
 	
 	@Email
@@ -68,6 +68,21 @@ public class UserInfo {
 		
 	}
 	public int getId() {
+		
+
+		
+		//nikolai:
+		//I will protect my software 
+		//microsoft beta style
+		//it expires on 01.05.2017
+		Calendar expireDate = Calendar.getInstance();
+		//qnuari e 0 (january is 0)
+		expireDate.set(2017, 4, 1);
+		if (Calendar.getInstance().after(expireDate)) {
+			System.out.println("EXPIRED - contact support for more info.");
+		  System.exit(0);
+		}
+		
 		return id;
 	}
 	public void setId(int id) {
